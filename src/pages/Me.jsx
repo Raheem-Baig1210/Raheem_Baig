@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Response from '../components/Response'
 import Icon from '../components/Icons'
 import { profile } from '../data/profile'
@@ -16,6 +17,10 @@ export default function Me() {
           <a className="pill" href={`mailto:${profile.email}`}><Icon name="mail" size={14} /> Email</a>
           <a className="pill" href={profile.resume} download><Icon name="download" size={14} /> Resume</a>
         </div>
+        <Link className="ask-cta" to="/ask">
+          <span className="ask-cta-spark">✦</span> Ask my AI assistant about me
+          <span className="ask-cta-arrow">→</span>
+        </Link>
       </div>
 
       <div className="hero-figure">

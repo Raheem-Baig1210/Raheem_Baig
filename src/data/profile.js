@@ -32,6 +32,7 @@ export const endpoints = [
   { method: 'GET', path: '/education', to: '/education', status: 'compiling notes' },
   { method: 'GET', path: '/certifications', to: '/certifications', status: 'showing receipts' },
   { method: 'GET', path: '/github', to: '/github', status: 'syncing repos' },
+  { method: 'POST', path: '/ask', to: '/ask' },
   { method: 'POST', path: '/collab', to: '/collab', status: 'ready to respond' },
 ]
 
@@ -56,6 +57,7 @@ export const stack = [
   { group: 'AI & Analysis', items: ['Python', 'Jupyter Notebook', 'Claude Code'] },
   { group: 'Tools', items: ['Postman', 'Canva', 'MS Excel', 'MS Word'] },
   { group: 'Core', items: ['Full Stack Development', 'Protected Routes', 'Role-based Access', 'Rendering Workflow Optimization'] },
+  { group: 'Soft Skills', items: ['Analytical Thinking', 'Project Management', 'Teamwork', 'Problem-solving', 'Adaptability', 'Agile Methodologies', 'Leadership', 'Detail-oriented', 'Self-learner'] },
 ]
 
 export const experience = [

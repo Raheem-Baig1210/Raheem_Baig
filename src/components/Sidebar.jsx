@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { endpoints, profile } from '../data/profile'
 
 export function MethodBadge({ method }) {
@@ -10,10 +10,10 @@ export default function Sidebar({ open, onClose }) {
     <>
       <div className={`scrim ${open ? 'show' : ''}`} onClick={onClose} />
       <aside className={`sidebar ${open ? 'open' : ''}`}>
-        <div className="brand">
+        <Link to="/" className="brand" aria-label="Go to homepage">
           <span className="brand-name">{profile.brand}</span>
           <span className="brand-version">{profile.version}</span>
-        </div>
+        </Link>
 
         <nav className="endpoints" aria-label="Endpoints">
           <h2 className="eyebrow">Endpoints</h2>

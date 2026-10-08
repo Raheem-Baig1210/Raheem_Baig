@@ -10,6 +10,7 @@ import Education from './pages/Education'
 import Certifications from './pages/Certifications'
 import GitHub from './pages/GitHub'
 import Collab from './pages/Collab'
+import Ask from './pages/Ask'
 import NotFound from './pages/NotFound'
 import { profile, experience, projects, fallbackRepos } from './data/profile'
 
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="/education" element={<Education />} />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/github" element={<GitHub />} />
+        <Route path="/ask" element={<Ask />} />
         <Route path="/collab" element={<Collab />} />
         <Route path="*" element={<NotFound />} />
       </Route>
