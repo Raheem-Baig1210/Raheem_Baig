@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import AvatarPanel from './AvatarPanel'
 import { endpoints, profile } from '../data/profile'
@@ -43,7 +43,7 @@ export default function Shell({ github }) {
           <button className="menu-btn" aria-label="Open endpoints" onClick={() => setMenuOpen(true)}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z" /></svg>
           </button>
-          <span className="prompt">{profile.prompt}</span>
+          <Link to="/" className="prompt" aria-label="Home">{profile.prompt}</Link>
           <span className="online">online</span>
         </header>
 

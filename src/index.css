@@ -93,7 +93,9 @@ button, input, textarea { font: inherit; }
 .prompt {
   position: absolute; left: 50%; transform: translateX(-50%);
   color: var(--muted); font-size: 14px; letter-spacing: 0.02em; white-space: nowrap;
+  transition: color 0.15s;
 }
+.prompt:hover { color: var(--text); }
 .online { color: var(--indigo-text); font-size: 14px; }
 .menu-btn {
   display: none;
@@ -497,14 +499,20 @@ button, input, textarea { font: inherit; }
   .device::before, .device-notch { display: none; }
   .window { border: 0; border-radius: 0; }
   .titlebar, .statusbar { border-radius: 0; }
-  .online { display: none; }
   .hero { flex-direction: column; align-items: flex-start; padding: 48px 32px 40px; }
   .hero-figure { align-self: center; width: 220px; height: 270px; margin: 20px 0 0; }
-  .tag-right { right: -40px; }
-  .tag-left { left: -50px; }
+  /* Hang off the photo's edges beside the head, clear of the face. */
+  .tag-right { right: -60px; top: 33%; }
+  .tag-left { left: -64px; top: 57%; }
   .narrow, .wide { padding: 36px 20px 48px; }
   .detail { padding: 28px 20px 48px; }
   .fact { grid-template-columns: 100px 1fr; }
   .gh-stats { grid-template-columns: repeat(2, auto); }
   .title { font-size: 26px; }
+}
+
+@media (max-width: 360px) {
+  .tag { font-size: 11px; padding: 3px 10px; }
+  .tag-right { right: -40px; }
+  .tag-left { left: -44px; }
 }
