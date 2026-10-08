@@ -368,28 +368,52 @@ button, input, textarea { font: inherit; }
 .certs-page { max-width: 940px; }
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .cert {
-  display: flex; flex-direction: column; text-align: left; padding: 0; cursor: zoom-in;
-  background: #0d0d12; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
-  color: inherit; transition: border-color 0.2s, transform 0.2s;
+  display: flex; flex-direction: column; width: 100%; padding: 0; text-align: left;
+  font: inherit; color: inherit; cursor: pointer;
+  background: #111114; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
 }
 .cert:hover { border-color: var(--indigo-line); transform: translateY(-2px); }
+.cert:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
 .cert-img { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #0a0a0e; border-bottom: 1px solid var(--line); }
-.cert-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.cert-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.4s ease; }
 .cert:hover .cert-img img { transform: scale(1.04); }
 .cert-body { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; padding: 18px 16px 16px; flex: 1; }
 .cert-title { color: var(--text); font-weight: 600; font-size: 14px; line-height: 1.4; }
-.cert-issuer { color: var(--indigo-text); font-size: 12px; }
+.cert-meta { display: flex; flex-direction: column; font-size: 12px; }
+.cert-issuer { color: var(--indigo-text); }
+.cert-date { color: var(--muted); }
+
 .lightbox {
-  position: fixed; inset: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: center; padding: 24px;
-  background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(6px);
-  animation: enter 0.2s ease both;
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 40px;
+  background: rgba(6, 6, 8, 0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  cursor: zoom-out; animation: fade 0.2s ease both;
 }
-.lightbox figure { margin: 0; max-width: 900px; width: 100%; }
-.lightbox img { width: 100%; border-radius: 10px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); }
-.lightbox figcaption { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--text); }
-.lightbox button { background: none; border: 1px solid #2c2c3a; color: var(--body); border-radius: 99px; padding: 3px 12px; cursor: pointer; font-size: 12px; }
-.lightbox button:hover { border-color: var(--indigo); color: var(--text); }
+@keyframes fade { from { opacity: 0; } }
+.lightbox figure {
+  margin: 0; max-width: min(900px, 100%);
+  display: flex; flex-direction: column; align-items: center; gap: 14px; cursor: default;
+  animation: pop 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes pop { from { opacity: 0; transform: scale(0.96); } }
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 160px); object-fit: contain;
+  border-radius: 10px; background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(135, 206, 250, 0.3);
+}
+.lightbox figcaption { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.lightbox-title { color: var(--text); font-size: 14px; font-weight: 500; }
+.lightbox-sub { color: #87cefa; font-size: 12px; letter-spacing: 0.06em; }
+.lightbox-close {
+  position: absolute; top: 20px; right: 24px;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; z-index: 1;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); }
 
 /* ---------------- /github ---------------- */
 .gh-stats { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 8px 36px; margin-bottom: 28px; }

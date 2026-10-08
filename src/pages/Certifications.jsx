@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Response from '../components/Response'
-import { certifications, certificatesPdf } from '../data/profile'
+import { certifications } from '../data/profile'
 
 export default function Certifications() {
   const [open, setOpen] = useState(null)
@@ -18,32 +19,34 @@ export default function Certifications() {
 
       <div className="cert-grid">
         {certifications.map((c) => (
-          <button key={c.title} className="cert" onClick={() => setOpen(c)}>
+          <button key={c.title} className="cert" onClick={() => setOpen(c)} aria-label={`Open certificate: ${c.title}`}>
             <span className="cert-img">
               <img src={c.image} alt={`${c.title} certificate`} loading="lazy" />
             </span>
             <span className="cert-body">
               <span className="cert-title">{c.title}</span>
-              <span className="cert-issuer">{c.issuer}</span>
+              <span className="cert-meta">
+                <span className="cert-issuer">{c.issuer}</span>
+                {c.date && <span className="cert-date">{c.date}</span>}
+              </span>
             </span>
           </button>
         ))}
       </div>
 
-      <p className="alt-contact">
-        Original certificates — <a href={certificatesPdf} target="_blank" rel="noreferrer">view the original PDF ↗</a>
-      </p>
-
-      {open && (
-        <div className="lightbox" role="dialog" aria-label={open.title} onClick={() => setOpen(null)}>
+      {/* Portalled to <body> so the page's enter animation can't clip the overlay. */}
+      {open && createPortal(
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label={open.title} onClick={() => setOpen(null)}>
+          <button className="lightbox-close" onClick={() => setOpen(null)} aria-label="Close">×</button>
           <figure onClick={(e) => e.stopPropagation()}>
             <img src={open.image} alt={`${open.title} certificate`} />
             <figcaption>
-              <span>{open.title}</span>
-              <button onClick={() => setOpen(null)} aria-label="Close">esc ✕</button>
+              <span className="lightbox-title">{open.title}</span>
+              <span className="lightbox-sub">{open.date || open.issuer}</span>
             </figcaption>
           </figure>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

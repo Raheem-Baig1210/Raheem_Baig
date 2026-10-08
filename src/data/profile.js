@@ -248,8 +248,19 @@ export const certifications = [
     issuer: 'Anthropic · with UCC, Ringling College & HEA',
     image: '/certificates/ai-fluency.jpg',
   },
+  {
+    title: 'Foundations of Cybersecurity',
+    issuer: 'Google · Coursera',
+    date: 'October 2024',
+    image: '/certificates/google-foundations-of-cybersecurity.jpg',
+  },
+  {
+    title: 'Play It Safe: Manage Security Risks',
+    issuer: 'Google · Coursera',
+    date: 'October 2024',
+    image: '/certificates/google-play-it-safe.jpg',
+  },
 ]
-export const certificatesPdf = '/certificates/anthropic-certificates.pdf'
 
 // Shown on /github if the live GitHub API is unavailable.
 export const fallbackRepos = [
